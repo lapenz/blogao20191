@@ -11,6 +11,7 @@
       <h3><%= post.subject %></h3>
       <p><%= resumePost post.text %></p>
       <h4>Author: <%= post.author.name %></h4>
+      <%= image_tag post.author.photo.thumb.url unless post.author.photo.thumb.file.nil? %>
       <small>Data: <%= post.created_at %></small>
 
       <hr/>

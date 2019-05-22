@@ -21,6 +21,15 @@
     <%= form.number_field :age, id: :author_age, class: 'form-control' %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :photo %>
+    <%= form.file_field :photo, id: :author_photo, class: 'form-control' %>
+  </div>
+  <%= form.check_box :remove_photo %> Remover
+  <p>
+    <%= image_tag author.photo.url unless author.photo.file.nil? %>
+  </p>
+
   <div class="actions">
     <%= form.submit class: 'btn btn-success' %>
   </div>

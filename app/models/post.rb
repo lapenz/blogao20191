@@ -4,5 +4,5 @@ class Post < ApplicationRecord
 
   validates_presence_of :text, :subject, :title
 
-  scope :recents, -> {(where('created_at >= ?', Time.now.beginning_of_day - 9.days))}
+  scope :recents, -> {(where('created_at >= ?', Time.now.beginning_of_day - 90.days))}
 end

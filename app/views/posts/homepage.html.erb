@@ -1,14 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Homepage</h1>
+<div class="page-header">
+  <h1>Homepage </h1>
+</div>
 
-<% @posts.each do |post| %>
-  <h2><%= post.title %></h2>
-  <h3><%= post.subject %></h3>
-  <p><%= resumePost post.text %></p>
-  <h4>Author: <%= post.author.name %></h4>
-  <small>Data: <%= post.created_at %></small>
+<div class="row">
+  <div class="col-xs-8">
+    <% @posts.each do |post| %>
+      <h2><%= post.title %></h2>
+      <h3><%= post.subject %></h3>
+      <p><%= resumePost post.text %></p>
+      <h4>Author: <%= post.author.name %></h4>
+      <small>Data: <%= post.created_at %></small>
 
-  <hr/>
-<% end %>
+      <hr/>
+    <% end %>
+
+  </div>
+
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Categorias</div>
+      <div class="panel-body">
+        <ul>
+          <% Category.all.each do |category| %>
+            <li><%= link_to category.description, homepage_posts_path(category_id: category.id) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Pesquisar</div>
+      <div class="panel-body">
+        <%= form_tag(homepage_posts_path, method: 'post') do %>
+          <%= text_field_tag :term %>
+          <%= submit_tag("Buscar") %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
 
